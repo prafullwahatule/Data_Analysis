@@ -1,17 +1,58 @@
 -- ========================================================
--- Assignment 4 :  University Database - Practice Questions
+-- Assignment 4 : University Database - Practice Questions
+-- Table       : students
 -- ========================================================
 
--- Question 1: Find the average grade for each department.
+-- Q1. Average grade in each department
+SELECT 
+    department, 
+    AVG(grade) AS avg_grade
+FROM students
+GROUP BY department;
 
--- Question 2: List department with more than 2 students.
+-- Q2. Departments with more than 2 students
+SELECT 
+    department, 
+    COUNT(*) AS total_students
+FROM students
+GROUP BY department
+HAVING COUNT(*) > 2;
 
--- Question 3: Find the highest grade in each department.
+-- Q3. Highest grade in each department
+SELECT 
+    department, 
+    MAX(grade) AS highest_grade
+FROM students
+GROUP BY department;
 
--- Question 4: List departments where the average grade is below 85.
+-- Q4. Departments where the average grade is below 85
+SELECT 
+    department, 
+    AVG(grade) AS avg_grade
+FROM students
+GROUP BY department
+HAVING AVG(grade) < 85;
 
--- Question 5: Find the number of students in each grade.
+-- Q5. Number of students in each grade
+SELECT 
+    grade, 
+    COUNT(*) AS total_students
+FROM students
+GROUP BY grade;
 
--- Question 6: List grades with more than 1 student.
+-- Q6. Grades with more than 1 student
+SELECT 
+    grade, 
+    COUNT(*) AS total_students
+FROM students
+GROUP BY grade
+HAVING COUNT(*) > 1;
 
--- Question 7: Find the average grade for students with more than 1 student in their grade.
+-- Q7. Average grade for grades that have more than 1 student
+SELECT 
+    grade,
+    AVG(grade) AS avg_grade, 
+    COUNT(*) AS total_students
+FROM students
+GROUP BY grade
+HAVING COUNT(*) > 1;

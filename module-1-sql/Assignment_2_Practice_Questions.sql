@@ -1,43 +1,106 @@
--- 20 Basic SQL “Data-Fetch & Operators” Questions
--- (Use the BusDetails table in the BusManagement database.)
-
+-- ========================================================
+-- Assignment : 20 Basic SQL “Data-Fetch & Operators” Questions
+-- Database   : BusManagement
+-- Table      : BusDetails
+-- ========================================================
 
 -- Q1. List every column for buses operated by Neeta Travels.
+SELECT * 
+FROM BusDetails
+WHERE OperatorName = 'Neeta Travels';
 
--- Q2. Display BusID, BusNumber, and Fare for all buses whose fare is greater than ₹600.
+-- Q2. BusID, BusNumber, and Fare for buses with fare > 600
+SELECT BusID, BusNumber, Fare 
+FROM BusDetails
+WHERE Fare > 600;
 
--- Q3. Return the details of buses that travel from Pune to Mumbai.
+-- Q3. Details of buses traveling from Pune to Mumbai
+SELECT * 
+FROM BusDetails
+WHERE SourceCity = 'Pune' AND DestinationCity = 'Mumbai';
 
--- Q4. Show BusNumber and DepartureTime for buses departing after 20:00 (8 p.m.).
+-- Q4. BusNumber and DepartureTime for buses departing after 20:00
+SELECT BusNumber, DepartureTime 
+FROM BusDetails
+WHERE DepartureTime > '20:00:00';
 
--- Q5. Fetch all columns for buses whose BusType is either AC or Sleeper.
+-- Q5. Buses whose BusType is AC or Sleeper
+SELECT * 
+FROM BusDetails
+WHERE BusType IN ('AC', 'Sleeper');
 
--- Q6. Retrieve BusID, OperatorName, and Fare for buses with fares between ₹350 and ₹600 (inclusive).
+-- Q6. BusID, OperatorName, and Fare for buses with fare between 350 and 600
+SELECT BusID, OperatorName, Fare 
+FROM BusDetails
+WHERE Fare BETWEEN 350 AND 600;
 
--- Q7. List the BusNumbers containing the substring MH12 anywhere in the plate.
+-- Q7. BusNumbers containing the substring MH12
+SELECT BusNumber 
+FROM BusDetails
+WHERE BusNumber LIKE 'MH12%';
 
--- Q8. Show every bus that arrives before 09:00.
+-- Q8. All buses arriving before 09:00
+SELECT * 
+FROM BusDetails
+WHERE ArrivalTime < '09:00:00';
 
--- Q9. Get BusID, SourceCity, DestinationCity, and Fare for buses where the source city is not Pune.
+-- Q9. BusID, SourceCity, DestinationCity, and Fare where source city is not Pune
+SELECT BusID, SourceCity, DestinationCity, Fare 
+FROM BusDetails
+WHERE SourceCity <> 'Pune';
 
--- Q10. Display the five cheapest buses (all columns), ordered by Fare ascending and limited to 5 rows.
+-- Q10. Five cheapest buses (all columns), ordered by Fare ascending
+SELECT * 
+FROM BusDetails
+ORDER BY Fare ASC
+LIMIT 5;
 
--- Q11. Return BusNumber and OperatorName for buses whose destination city is in (Goa, Nagpur, Hyderabad).
+-- Q11. BusNumber and OperatorName for buses going to Goa, Nagpur, Hyderabad
+SELECT BusNumber, OperatorName 
+FROM BusDetails
+WHERE DestinationCity IN ('Goa', 'Nagpur', 'Hyderabad');
 
--- Q12. List buses whose DepartureTime is exactly 06:00:00.
+-- Q12. Buses whose DepartureTime is exactly 06:00:00
+SELECT * 
+FROM BusDetails
+WHERE DepartureTime = '06:00:00';
 
--- Q13. Fetch details of buses whose BusType is Non-AC and whose fare is less than ₹400.
+-- Q13. Buses whose BusType is Non-AC and Fare < 400
+SELECT * 
+FROM BusDetails
+WHERE BusType = 'Non-AC' AND Fare < 400;
 
--- Q14. Show BusID, BusNumber, Fare for buses travelling from Mumbai and having Fare ≥ ₹500.
+-- Q14. BusID, BusNumber, Fare for buses from Mumbai with Fare >= 500
+SELECT BusID, BusNumber, Fare 
+FROM BusDetails
+WHERE SourceCity = 'Mumbai' AND Fare >= 500;
 
--- Q15. Retrieve all buses ordered by DepartureTime descending (latest departures first).
+-- Q15. All buses ordered by DepartureTime descending
+SELECT * 
+FROM BusDetails
+ORDER BY DepartureTime DESC;
 
--- Q16. Select BusNumber, SourceCity, DestinationCity where the destination city name ends with the letter e.
+-- Q16. BusNumber, SourceCity, DestinationCity where destination ends with 'e'
+SELECT BusNumber, SourceCity, DestinationCity 
+FROM BusDetails
+WHERE DestinationCity LIKE '%e';
 
--- Q17. List buses operated by MSRTC excluding those that start from Mumbai.
+-- Q17. Buses operated by MSRTC excluding those starting from Mumbai
+SELECT * 
+FROM BusDetails
+WHERE OperatorName = 'MSRTC' AND SourceCity <> 'Mumbai';
 
--- Q18. Get the first three rows (any order) from BusDetails to check the table structure.
+-- Q18. First three rows from BusDetails
+SELECT * 
+FROM BusDetails
+LIMIT 3;
 
--- Q19. Display BusID, BusType for buses whose BusType is Sleeper and arrival is after 06:00.
+-- Q19. BusID, BusType for Sleeper buses arriving after 06:00
+SELECT BusID, BusType 
+FROM BusDetails
+WHERE BusType = 'Sleeper' AND ArrivalTime > '06:00:00';
 
--- Q20. Return all buses where Fare is not equal to ₹450.
+-- Q20. All buses where Fare is not equal to 450
+SELECT * 
+FROM BusDetails
+WHERE Fare <> 450;
