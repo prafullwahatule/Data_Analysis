@@ -1,10 +1,10 @@
 -- =====================================
--- Assignment 5 :  SampleDB Database
+-- Assignment 6 :  SampleDB Database
 -- =====================================
 
-CREATE DATABASE SampleDB;
+-- CREATE DATABASE SampleDB;
 USE SampleDB;
-
+-- DROP TABLE employee;
 -- Create Table
 CREATE TABLE Employee (
     EmployeeID INT PRIMARY KEY,

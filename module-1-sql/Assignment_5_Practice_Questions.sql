@@ -1,85 +1,96 @@
 -- ========================================================
--- Assignment 5 :  AirlinesDB Database - Practice Questions
+-- Assignment 5 : AirlinesDB Database - Practice Questions
 -- ========================================================
 
 SET SQL_SAFE_UPDATES = 0;
 
--- Show all Records
+-- Show all records
 SELECT * FROM flights;
 
--- 1. Update the departure city of the flight with FlightID 5 to 'Dubai International Airport'.
+-- 1. Update departure city for FlightID 5
 UPDATE flights
 SET DepartureCity = 'Dubai International Airport'
 WHERE FlightID = 5;
 
-
--- 2. Delete the flight with FlightID 10 from the Flights table.
+-- 2. Delete flight with FlightID 10
 DELETE FROM flights
 WHERE FlightID = 10;
 
--- 3. Add a new column 'FlightStatus' with a default value of 'Scheduled'.
+-- 3. Add column FlightStatus (default: Scheduled)
 ALTER TABLE flights
-ADD FlightStatus VARCHAR(50) DEFAULT 'Scheduled';
+ADD COLUMN FlightStatus VARCHAR(50) DEFAULT 'Scheduled';
 
--- 4. Drop the 'AvailableSeats' column from the Flights table.
+-- 4. Drop column AvailableSeats
 ALTER TABLE flights
 DROP COLUMN AvailableSeats;
 
--- 5. Rename the 'FlightNumber' column to 'FlightCode' in the Flights table.
+-- 5. Rename column FlightNumber → FlightCode
 ALTER TABLE flights
 RENAME COLUMN FlightNumber TO FlightCode;
 
--- 6. Update the ticket price of all flights with a departure city of 'London' to 1500.00.
+-- 6. Update ticket price to 1500 for flights from London
 UPDATE flights
 SET TicketPrice = 1500.00
 WHERE DepartureCity = 'London';
 
--- 7. Delete all flights that have an arrival city of 'Paris'.
+-- 7. Delete flights arriving in Paris
 DELETE FROM flights
 WHERE ArrivalCity = 'Paris';
 
--- 8. Add a new column 'DepartureTerminal' with a default value of 'T1'.
+-- 8. Add column DepartureTerminal (default: T1)
 ALTER TABLE flights
 ADD COLUMN DepartureTerminal VARCHAR(20) DEFAULT 'T1';
 
--- 9. Drop the 'AircraftType' column from the Flights table.
+-- 9. Drop column AircraftType
 ALTER TABLE flights
 DROP COLUMN AircraftType;
 
--- 10. Rename the 'ArrivalTime' column to 'EstimatedArrival' in the Flights table.
+-- 10. Rename column ArrivalTime → EstimatedArrival
 ALTER TABLE flights
 RENAME COLUMN ArrivalTime TO EstimatedArrival;
 
--- 11. Update the flight status of all flights with a departure city of 'New York' to 'Boarding'.
+-- 11. Update FlightStatus to 'Boarding' for New York flights
 UPDATE flights
 SET FlightStatus = 'Boarding'
 WHERE DepartureCity = 'New York';
 
--- 12. Delete the flight with FlightID 15 from the Flights table.
+-- 12. Delete flight with FlightID 15
 DELETE FROM flights
 WHERE FlightID = 15;
 
--- 13. Add a new column 'DelayMinutes' with a default value of 0.
+-- 13. Add column DelayMinutes (default: 0)
 ALTER TABLE flights
 ADD COLUMN DelayMinutes INT DEFAULT 0;
 
--- 14. Drop the 'TicketPrice' column from the Flights table.
+-- 14. Drop column TicketPrice
 ALTER TABLE flights
 DROP COLUMN TicketPrice;
 
--- 15. Rename the 'DepartureCity' column to 'OriginCity' in the Flights table.
+-- 15. Rename column DepartureCity → OriginCity
 ALTER TABLE flights
 RENAME COLUMN DepartureCity TO OriginCity;
 
--- 16. Update the departure terminal to 'T2' for all flights with FlightStatus 'Delayed'.
+-- 16. Update terminal to T2 for delayed flights from New York
 UPDATE flights
 SET DepartureTerminal = 'T2'
-WHERE FlightStatus = 'Delayed';
+WHERE OriginCity = 'New York' AND FlightStatus = 'Delayed';
 
--- 17. Delete all flights with an arrival city of 'Los Angeles'.
+-- 17. Delete flights arriving in Los Angeles
+DELETE FROM flights
+WHERE ArrivalCity = 'Los Angeles';
 
--- 18. Add a new column 'GateNumber' with a default value of 'A1'.
+-- 18. Add column GateNumber (default: A1)
+ALTER TABLE flights
+ADD COLUMN GateNumber VARCHAR(20) DEFAULT 'A1';
 
--- 19. Drop the 'FlightStatus' column from the Flights table.
+-- 19. Drop column FlightStatus
+ALTER TABLE flights
+DROP COLUMN FlightStatus;
 
--- 20. Rename the 'EstimatedArrival' column to 'ActualArrival' in the Flights table.
+-- 20. Rename column EstimatedArrival → ActualArrival
+ALTER TABLE flights
+RENAME COLUMN EstimatedArrival TO ActualArrival;
+
+-- ========================================================
+-- End of Assignment 5
+-- ========================================================
