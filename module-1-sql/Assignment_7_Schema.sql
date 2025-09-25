@@ -9,17 +9,6 @@ CREATE DATABASE IF NOT EXISTS CarDB;
 USE CarDB;
 
 -- Step 3: Create Cars Table
--- Columns:
--- CarID            → Primary Key (Unique ID for each car)
--- Brand            → Car Brand (e.g., Toyota, BMW)
--- Model            → Car Model (e.g., Camry, X5)
--- Year             → Manufacturing Year
--- EngineType       → Engine type (V6, V8, Electric, etc.)
--- FuelType         → Fuel type (Gasoline, Diesel, Hybrid, Electric, etc.)
--- TransmissionType → Transmission (Automatic, Manual, CVT, etc.)
--- Color            → Car color
--- Mileage          → Total kilometers driven
--- Price            → Price in USD
 CREATE TABLE Cars (
     CarID INT PRIMARY KEY,
     Brand VARCHAR(50) NOT NULL,
